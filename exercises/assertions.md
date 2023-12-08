@@ -18,32 +18,32 @@ Answer the following questions:
 
   Par exemple, 
 
-    ```java
-    String str1 = "Hello";
-    String str2 = str1;
-    assertSame(str1, str2); // Renvoie True
-    assertEquals(str1, str2); // Renvoie True
-    ```
+  ```java
+  String str1 = "Hello";
+  String str2 = str1;
+  assertSame(str1, str2); // Renvoie True
+  assertEquals(str1, str2); // Renvoie True
+  ```
 
-    ```java
-    String str1 = new String("Hello");
-    String str2 = new String("Hello");
-    assertSame(str1, str2);  // Renvoie False
-    assertEquals(str1, str2);  // Renvoie True
-    ```
+  ```java
+  String str1 = new String("Hello");
+  String str2 = new String("Hello");
+  assertSame(str1, str2);  // Renvoie False
+  assertEquals(str1, str2);  // Renvoie True
+  ```
 
 3. On peut utiliser `fail` pour s'assurer de renvoyer un exception lorsque l'on se trouve dans un scénario qui ne devrait pas se produire.
 
   Par exemple,
 
-    ```java
-    try{
-      methodeErronee();
-      fail(); // FAIL si l'exception n'est pas catchée
-    } catch (methodException e) {
-      // OK on catch bien l'exception
-    }
-    ```
+  ```java
+  try{
+    methodeErronee();
+    fail(); // FAIL si l'exception n'est pas catchée
+  } catch (methodException e) {
+    // OK on catch bien l'exception
+  }
+  ```
 
 4. Tout d'abord, l'utilisation d'`assertThrows` rend la vérification de levée d'exception plus claire. Par ailleurs, la méthode `assertThrows` offre diverses surchages qui attendent en paramètres le type de l'exception qui doit être levée, une interface fonctionnelle de type Executable qui est le code à exécuter et éventuellement un message. Elle est également compatible avec l'utilisation de lambda.
 
