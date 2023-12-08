@@ -26,3 +26,20 @@ Use the project in [tp3-balanced-strings](../code/tp3-balanced-strings) to compl
 
 ## Answer
 
+Après avoir implémenté la méthode `isBalanced`, nous allons utiliser l'"input space partitionning" pour établir un ensemble d'entrée initial.
+
+| caracteristiques                                          | P1    | P2    |
+|-----------------------------------------------------------|-------|-------|
+| C1 = String vide                                          | True  |       |
+| C2 = Nb occurences de '{', '}', '[', ']', '(', ')' pair   | True  | False |
+| C3 = Nb occurences de '{', '}', '[', ']', '(', ')' impair | False |       |
+| C4 = Nb ouvrant == nb fermant                             | True  | False |
+
+A partir de ce partitionnage, nous pouvons créer un ensemble d'entrée:
+
+| C  | P1 | P2 |
+|----|----|----|
+| C1 | "" |    | 
+| C2 |    |    | 
+| C3 |    |    | 
+| C4 |    |    | 
