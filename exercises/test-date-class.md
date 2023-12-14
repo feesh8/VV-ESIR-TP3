@@ -65,12 +65,6 @@ Les blocs de partition que nous avons identifiés dans le cours pour la méthode
 - `{ day: 29, month: 2, year: 2019}`
 - `{ day: 0, month: 13, year: 2018}`
 
-La caractéristique "value of `year`" est commune à `isValidDate`, `isLeapYear`, `nextDate`, `previousDate` et `compareTo`.
-
-La caractéristique "value of `month`" est commune à `isValidDate`, `nextDate`, `previousDate` et `compareTo`.
-
-La caractéristique "value of `day`" est commune à `isValidDate`, `nextDate`, `previousDate` et `compareTo`.
-
 Pour la méthode `isLeapYear`, nous pouvons indentifier les caractéristiques et blocs suivants:
 
 | Caractéristique              | b1   | b2    |
@@ -121,5 +115,11 @@ Avec les blocs de partition suivants:
 | C | b1 | b2 | b3 |
 |----|------------------------------------|-----------------------------------|-----------------------------------|
 | C1 | `{ day: 12, month: 06, year: 120}, { day: 27, month: 08, year: 2018}` | `{ day: 5, month: 3, year: 2024}, { day: 5, month: 3, year: 2024}` | `{ day: 5, month: 3, year: 3007}, { day: 2, month: 7, year: 1932}` |
+
+La caractéristique "value of `year`" est commune à `isValidDate`, `isLeapYear`, `nextDate`, `previousDate` et `compareTo`.
+
+La caractéristique "value of `month`" est commune à `isValidDate`, `nextDate`, `previousDate` et `compareTo`.
+
+La caractéristique "value of `day`" est commune à `isValidDate`, `nextDate`, `previousDate` et `compareTo`.
 
 2.

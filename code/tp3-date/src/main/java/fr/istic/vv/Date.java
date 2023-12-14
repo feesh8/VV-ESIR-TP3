@@ -62,11 +62,23 @@ class Date implements Comparable<Date> {
     int newMonth = this.month;
     int newYear = this.year;
     if (!isValidDate(newDay, newMonth, newYear)) {
-      newDay = 1;
       newMonth -= 1;
+      if (newMonth == 4 || newMonth == 6 || newMonth == 9 || newMonth == 11) {
+        newDay = 30;
+      } else if (newMonth == 1 || newMonth == 3 || newMonth == 5 || newMonth == 7
+          || newMonth == 8 || newMonth == 10) {
+        newDay = 31;
+      } else if (newMonth == 2) {
+        if (isLeapYear(newYear)) {
+          newDay = 29;
+        } else {
+          newDay = 28;
+        }
+      }
       if (!isValidDate(newDay, newMonth, newYear)) {
-        newMonth = 1;
+        newMonth = 12;
         newYear -= 1;
+        newDay = 31;
         if (newYear == 0) {
           newYear -= 1;
         }
