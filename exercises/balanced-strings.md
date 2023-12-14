@@ -26,6 +26,8 @@ Use the project in [tp3-balanced-strings](../code/tp3-balanced-strings) to compl
 
 ## Answer
 
+### 1)
+
 Après avoir implémenté la méthode `isBalanced`, nous allons utiliser l'"input space partitionning" pour établir un ensemble d'entrée initial.
 
 | caracteristiques                                          | P1    | P2    |
@@ -52,5 +54,14 @@ Les blocs de partition que nous avons identifié sont donc les suivants:
 - Des ouvrants qui ne correspondent pas aux fermants ("[)", "[(}]")
 - Plusieur paires qui ne sont pas imbriquées ("[](){}", "[](}{)")
 
-### 2
-Avec les partitions initiales, nous avons obtenu un coverage
+### 2)
+Avec les test initiaux, nous avons obtenu un coverage de 97%. Le cas que nous n'avions pas identifié est le cas où nous avons une parenthèse fermante sans parenthèse ouvrante. En ajoutant un nouveau cas de test ")", nous avons atteint un coverage de 100%.
+
+### 3)
+Nos cas de test actuels ne satisfont pas le "Base Choice Coverage". En effet, lorsque l'on trouve un élément fermant, on vérifie si la pile est vide puis si l'élément en haut de la pile correspond au même élément ouvrant. Il nous faut donc ajouter plusieurs cas de test. De plus, nous n'avons pas de test utilisant autre chose que des parenthèses/accolades/crochets :
+- Les éléments fermants seuls: ")" (déjà présent dans les cas de test), "]", "}"
+- Les éléments fermants qui ne correspondent pas aux éléments ouvrants: "(]", "[)", "[}"
+- Les chaines quelconques: "abcd1234"
+- Les chaînes quelconques mixées avec des parenthèses: "abcd(12[3{4}])"
+
+Après avoir ajouté ces cas de test, nous obtenont un "Base Choice Coverage" de 100%.
