@@ -48,7 +48,7 @@ Use the following steps to design the test suite:
 3. If you have in your code any predicate that uses more than two boolean operators check if the test cases written to far satisfy _Base Choice Coverage_. If needed add new test cases. Describe below how you evaluated the logic coverage and the new test cases you added.
 4. Use PIT to evaluate the test suite you have so far. Describe below the mutation score and the live mutants. Add new test cases or refactor the existing ones to achieve a high mutation score.
 
-Use the project in [tp3-date](../code/tp3-date) to complete this exercise.
+Use the project in [tb3-date](../code/tb3-date) to complete this exercise.
 
 ## Answer
 
@@ -70,5 +70,56 @@ La caractéristique "value of `year`" est commune à `isValidDate`, `isLeapYear`
 La caractéristique "value of `month`" est commune à `isValidDate`, `nextDate`, `previousDate` et `compareTo`.
 
 La caractéristique "value of `day`" est commune à `isValidDate`, `nextDate`, `previousDate` et `compareTo`.
+
+Pour la méthode `isLeapYear`, nous pouvons indentifier les caractéristiques et blocs suivants:
+
+| Caractéristique              | b1   | b2    |
+| ---------------------------- | ---- | ----- |
+| C1 = Année divisible par 4   | True | False |
+| C2 = Année divisible par 100 | True | False |
+| C2 = Année divisible par 400 | True |       |
+
+Nous permettant d'identifier les blocs de partition suivant:
+| C | b1 | b2 |
+|----|----------|----------|
+| C1 | 8 | 10 |
+| C2 | 200 | 150 |
+| C2 | 800 | |
+
+Pour la méthode `nextDate`, nous identifions les caractéristiques et blocs suivants:
+
+| Caractéristique                                  | b1   | b2    |
+| ------------------------------------------------ | ---- | ----- |
+| C1 = Date correspond au dernier jour d'un mois   | True | False |
+| C2 = Date correspond au dernier jour d'une année | True |       |
+
+Nous permettant d'identifier les blocs de partition suivant:
+| C | b1 | b2 |
+|----|------------------------------------|-----------------------------------|
+| C1 | `{ day: 31, month: 1, year: 2018}` | `{ day: 5, month: 3, year: 2024}` |
+| C2 | `{ day: 31, month: 12, year: 1872}`| |
+
+Pour la méthode `previousDate`, de manière similaire nous identifions les caractéristiques les blocs:
+
+| Caractéristique                                  | b1   | b2    |
+| ------------------------------------------------ | ---- | ----- |
+| C1 = Date correspond au premier jour d'un mois   | True | False |
+| C2 = Date correspond au premier jour d'une année | True |       |
+
+Nous permettant d'identifier les blocs de partition suivants:
+| C | b1 | b2 |
+|----|------------------------------------|-----------------------------------|
+| C1 | `{ day: 1, month: 06, year: 2018}` | `{ day: 5, month: 3, year: 2024}` |
+| C2 | `{ day: 1, month: 1, year: -100}` | |
+
+Enfin, pour la méthode `compareTo` nous identifions les caractèristiques suivantes:
+| Caractéristique | b1 | b2 | b3 |
+|---------------------------------------------------|-----|-----|-----|
+| C1 = Différence entre la date 1 et la date 2 | < 0 | = 0 | > 0 |
+
+Avec les blocs de partition suivants:
+| C | b1 | b2 | b3 |
+|----|------------------------------------|-----------------------------------|-----------------------------------|
+| C1 | `{ day: 12, month: 06, year: 120}, { day: 27, month: 08, year: 2018}` | `{ day: 5, month: 3, year: 2024}, { day: 5, month: 3, year: 2024}` | `{ day: 5, month: 3, year: 3007}, { day: 2, month: 7, year: 1932}` |
 
 2.
