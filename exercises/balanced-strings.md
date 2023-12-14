@@ -42,7 +42,7 @@ A partir de ce partitionnage, nous pouvons créer un ensemble d'entrée:
 | C1 | ""     |        | 
 | C2 | "{[}]" | "{[]"  | 
 | C3 | "{[]"  |        | 
-| C4 | "[{}]" | "[{(]" | 
+| C4 | "[{()}]" | "[{(]" | 
 
 Les blocs de partition que nous avons identifié sont donc les suivants:
 - La chaîne de caractère vide, qui est toujours équilibrée
