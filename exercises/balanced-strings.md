@@ -65,3 +65,6 @@ Nos cas de test actuels ne satisfont pas le "Base Choice Coverage". En effet, lo
 - Les chaînes quelconques mixées avec des parenthèses: "abcd(12[3{4}])"
 
 Après avoir ajouté ces cas de test, nous obtenont un "Base Choice Coverage" de 100%.
+
+### 4)
+Nous allons maintenant utiliser PIT pour évaluer nos tests. A la premier exécution, nous avons obtenu un mutation score de 100%: tous les mutants sont tués par nos tests! Nous pouvons alors garder nos tests tel quels car ils sont tous utiles.
