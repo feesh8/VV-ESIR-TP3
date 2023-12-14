@@ -37,9 +37,17 @@ Après avoir implémenté la méthode `isBalanced`, nous allons utiliser l'"inpu
 
 A partir de ce partitionnage, nous pouvons créer un ensemble d'entrée:
 
-| C  | P1 | P2 |
-|----|----|----|
-| C1 | "" |    | 
-| C2 |    |    | 
-| C3 |    |    | 
-| C4 |    |    | 
+| C  | P1     | P2     |
+|----|--------|--------|
+| C1 | ""     |        | 
+| C2 | "{[}]" | "{[]"  | 
+| C3 | "{[]"  |        | 
+| C4 | "[{}]" | "[{(]" | 
+
+Les blocs de partition que nous avons identifié sont donc les suivants:
+- La chaîne de caractère vide, qui est toujours équilibrée
+- Le cas où on a un nombre d'occurences de '{', '}', '[', ']', '(', ')' impair, qui est toujours faux
+- Le cas où on on a un nombre de parties ouvrantes différent du nombre de parties fermantes, qui est aussi toujours faux
+- Plusieurs paires différentes imbriquées ("[{()}]")
+- Des ouvrants qui ne correspondent pas aux fermants ("[)", "[(}]")
+- Plusieur paires qui ne sont pas imbriquées ("[](){}", "[](}{)")
