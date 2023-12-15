@@ -122,4 +122,37 @@ La caractéristique "value of `month`" est commune à `isValidDate`, `nextDate`,
 
 La caractéristique "value of `day`" est commune à `isValidDate`, `nextDate`, `previousDate` et `compareTo`.
 
-2.
+2. Après avoir implémenter les tests de l'étape précdédente, nous obtenons la couverture de code suivante :
+
+![Coverage Date](CoverageDate.png)
+
+Ajout des tests suivants :
+
+- `(Date(31, 12, -1)).nextDate()` où l'on attend `Date(1, 1, 1);`
+- `(Date(1, 3, 2024)).previousDate()` où l'on attend `Date(29, 2, 2024);`
+- `(Date(1, 3, 2023)).previousDate()` où l'on attend `Date(28, 2, 2023);`
+- `(Date(1, 5, 2024)).previousDate()` où l'on attend `Date(30, 4, 2024);`
+- `(Date(1, 1, 1)).previousDate()` où l'on attend `Date(31, 12, -1);`
+- `new Date(32, 13, 2022)` où l'on s'attend à recevoir une exception
+
+Suite à cela, nous avons atteint un coverage de 100%.
+
+3. Nos cas de test actuels ne satisfont pas le "Base Choice Coverage". Afin d'améliorer celui-ci nous avons ajouté les tests suivants :
+
+- Pour `compareTo()`, une date où le jour et le mois des deux dates sont égaux mais que l'année est différente et une date où le jour et l'année des deux dates sont égaux mais que le mois est différent.
+- Pour `isValidDate()`, 5/9/2020, 5/10/2020 et 5/11/2020 car c'était les mois qu'il manquait.
+- Pour `previousDate()`, nous avons du ajouter un test pour chaque mois qu'il manquait :
+  - `(Date(1, 7, 2024)).previousDate()` où l'on attend `Date(30, 6, 2024);`
+  - `(Date(1, 10, 2024)).previousDate()` où l'on attend `Date(30, 9, 2024);`
+  - `(Date(1, 12, 2024)).previousDate()` où l'on attend `Date(30, 11, 2024);`
+  - `(Date(1, 2, 2024)).previousDate()` où l'on attend `Date(31, 1, 2024);`
+  - `(Date(1, 4, 2024)).previousDate()` où l'on attend `Date(31, 3, 2024);`
+  - `(Date(1, 8, 2024)).previousDate()` où l'on attend `Date(31, 7, 2024);`
+  - `(Date(1, 9, 2024)).previousDate()` où l'on attend `Date(31, 9, 2024);`
+  - `(Date(1, 11, 2024)).previousDate()` où l'on attend `Date(31, 10, 2024);`
+
+Les conditions mois par mois des différentes méthodes (`previousDate`par exemple) nécessitent un logique de test un peu barbare où chaque mois doit être testé.
+
+Suite à cet ajout, nous avons atteint 100% de Base Choice Coverage.
+
+4. Après avoir lancé PIT, le Mutation Coverage est de 97%. Effectivement 3 mutants on survécut à un changement d'inégalité dans la méthode `compareTo`. Toutefois, cela ne semble pas possible de tuer ces mutants étant donné le test d'égalité des dates à la ligne précédente. Peu importe que l'on teste si la date est inférieure stricte ou non, on obtiendra le même résultat.
